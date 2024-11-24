@@ -6,8 +6,8 @@ resource "aws_instance" "web" {
         name = "db"
     }
     resource "aws_security_group" "allow_ssh1" {
-        name = "nginx"
-        description = "allowing nginx create"
+        name = "allow_ssh1"
+        description = "allowing to create allow_ssh1"
         ingress {
             from_port = 22
             to_port = 22
