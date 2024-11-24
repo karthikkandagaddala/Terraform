@@ -1,14 +1,14 @@
-resource "aws_instance" "web" {
+resource "aws_instance" "master_node" {
     ami = "ami-09c813fb71547fc4f"
-    vpc_security_group_ids = [aws_security_group.terra.id]
-    instance_type = "t3.micro"
+    vcp_security_group_ids = [aws_security_group.ansible.id]
+    instance_type = "t2.micro"
     tags = {
-        Name = "web" 
+        Name = "master_node"
     }
 }
-resource "aws_security_group" "terra" {
-    name = "terra"
-    description = "To access instance_type"
+resource "aws_security_group" "ansible" {
+    name = "ansible"
+    description = "to access server"
     ingress {
         from_port = 22
         to_port = 22
@@ -20,9 +20,9 @@ resource "aws_security_group" "terra" {
         to_port = 0
         protocol = "-1"
         cidr_blocks = ["0.0.0.0/0"]
-    }
-    tags = {
-        Name = "terra"
-        createdBy = "karthik"
+        tags {
+            Name = "ansible"
+            createdBY = "karthik"
+        }
     }
 }
