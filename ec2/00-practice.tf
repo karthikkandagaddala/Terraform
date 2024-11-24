@@ -7,7 +7,7 @@ resource "aws_instance" "web" {
     }
 }
 resource "aws_security_group" "allow_ssh1" {
-    Name = "allow_ssh1"
+    name = "allow_ssh1"
     description = "Allow inbound SSH traffic"
     ingress {
         from_port    = 22
