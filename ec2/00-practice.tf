@@ -3,11 +3,11 @@ resource "aws_instance" "web" {
     vpc_security_group_ids = [aws_security_group.allow_ssh1.id]
     instance_type = "t3.micro"
     tags = {
-        name = "web"
+        Name = "web"
     }
 }
 resource "aws_security_group" "allow_ssh1" {
-    name = "allow_ssh1"
+    Name = "allow_ssh1"
     description = "Allow inbound SSH traffic"
     ingress {
         from_port    = 22
@@ -22,7 +22,7 @@ resource "aws_security_group" "allow_ssh1" {
         cidr_blocks  = ["0.0.0.0/0"]
     }
     tags = {
-        name = "allow_ssh1"
-        createdBy = "karthik"
+        Name = "allow_ssh1"
+        CreatedBy = "karthik"
     }
 }
