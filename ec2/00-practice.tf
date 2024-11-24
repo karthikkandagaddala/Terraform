@@ -7,7 +7,7 @@ resource "aws_instance" "web" {
     }
     resource "aws_security_group" "allow_ssh1" {
         name = "allow_ssh1"
-        description = "allowing to create allow_ssh1"
+        description = "Allow inbound SSH traffic"
         ingress {
             from_port = 22
             to_port = 22
@@ -21,7 +21,7 @@ resource "aws_instance" "web" {
             cidr_blocks = ["0.0.0.0/0"]
         }
         tags {
-            name = "nginx"
+            name = "allow_ssh1"
             createdBy = "karthik"
         }
     }
