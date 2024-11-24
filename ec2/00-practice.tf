@@ -1,11 +1,11 @@
 resource "aws_instance" "web" {
     ami = "ami-09c813fb71547fc4f"
-    vpc_security_group_ids = [aws_security_group.nginx.id]
+    vpc_security_group_ids = [aws_security_group.allow_ssh1.id]
     instance_type = "t3.micro"
     tags = {
         name = "db"
     }
-    resource "aws_security_group" "nginx" {
+    resource "aws_security_group" "allow_ssh1" {
         name = "nginx"
         description = "allowing nginx create"
         ingress {
