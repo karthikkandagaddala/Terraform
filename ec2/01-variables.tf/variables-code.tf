@@ -1,17 +1,17 @@
-resource "aws_instance" "master-node" {
+resource "aws_instance" "jump-host" {
     ami = "ami-09c813fb71547fc4f"
-    vpc_security_group_ids = [aws_security_group.ansible_ssh.id]
+    vpc_security_group_ids = [aws_security_group.dec14.id]
     instance_type = "t3.micro"
     tags = {
-        name = "master-node"
+        Name = "JUMP-HOST"
     }
 }
-resource "aws_security_group" "ansible_ssh" {
-    name = "ansible_ssh"
-    description = "allowing ansible_ssh"
+resource "aws_security_group" "dec14" {
+    name = "dec14"
+    description = "allow dec14"
     ingress {
         from_port = 22
-        to_port = 22
+        to_port =22
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
@@ -22,7 +22,7 @@ resource "aws_security_group" "ansible_ssh" {
         cidr_blocks = ["0.0.0.0/0"]
     }
     tags = {
-        Name = "Master-Node"
-        Createdby = "kandagaddala.karthik"
+        Name = "Jump-Host"
+        createdBy = "kandagaddala.karthik"
     }
 }
