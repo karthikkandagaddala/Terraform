@@ -3,7 +3,7 @@ resource "aws_instance" "db" {
     vpc_security_group_ids = [ aws_security_group.ssh_shell.id ]
     instance_type = "t3.micro"
     tags = {
-        name = "db"
+        Name = "db"
     }
 }
 resource "aws_security_group" "ssh_shell" {
