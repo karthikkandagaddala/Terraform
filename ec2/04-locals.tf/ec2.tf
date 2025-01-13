@@ -1,28 +1,26 @@
-resource "aws_instance" "example" {
-    ami = "ami-09c813fb71547fc4f"
-    vpc_security_group_ids = [aws_security_group.mars.id]
-    instance_type = "t3.micro"
-    tags = {
-        Name = "example"
-    }
+resource "aws_instance" "backend" {
+    ami = var.image_ids
+    vpc_security_group_ids = [aws_security_group.Mars.id]
+    instance_type = var.instance_type
+    tags = var.tags
 }
-resource "aws_security_group" "mars" {
-    name = "mars"
-    description = "Access for ssh connection"
+resource "aws_security_group" "Mars" {
+    name = var.sg_name
+    description = var.sg_description
     ingress {
-        from_port = 22
-        to_port = 22
-        protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
+        from_port = var.ssh_port
+        to_port = var.ssh_port
+        protocol = var.protocol
+        cidr_blocks = var.allowed_cidr
     }
     egress {
         from_port = 0
         to_port = 0
         protocol = "-1"
-        cidr_blocks = ["0.0.0.0/0"]
+        cidr_blocks = var.allowed_cidr
     }
     tags = {
-        Name = "mars"
+        Name = "Mars"
         createdBY = "karthik"
     }
 }
