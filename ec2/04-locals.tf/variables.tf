@@ -6,7 +6,7 @@ variable "instance_type" {
     default = "t3.micro"
     type = string
 }
-varaiable "tags" {
+variable "tags" {
     default = {
         Name = "backend"
         environment = "PROD"
