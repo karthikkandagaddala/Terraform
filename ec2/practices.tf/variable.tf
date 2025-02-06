@@ -1,20 +1,22 @@
 variable "image_ids" {
   default = "ami-09c813fb71547fc4f"
-}
-variable "instance_type" {
-  default = "t3.small"
   type    = string
 }
-variable "instance_names" {
-  default = ["db", "frontend", "backend"]
-  type    = list(any)
+variable "instance_type" {
+  default = "t3.micr"
+  type    = string
+}
+variable "tags" {
+  default = {
+    Name = "backed"
+  }
 }
 variable "sg_name" {
-  default = "token"
+  default = "pump"
   type    = string
 }
 variable "sg_description" {
-  default = "token based codee for terraform"
+  default = "secured shell"
   type    = string
 }
 variable "ssh_port" {
@@ -27,4 +29,8 @@ variable "protocol" {
 variable "allowed_cidr" {
   default = ["0.0.0.0/0"]
   type    = list(string)
+}
+variable "instance_names" {
+  default = ["db", "backed", "frontend"]
+  type    = list(any)
 }
