@@ -4,7 +4,7 @@ resource "aws_instance" "backed" {
   vpc_security_group_ids = [aws_security_group.pump.id]
   instance_type          = var.instance_names[count.index] == "backed" ? "t3.small" : "t3.micro"
   tags = {
-    Name = "backed"
+    Name = var.instance_names[count.index]
   }
 }
 resource "aws_security_group" "pump" {
